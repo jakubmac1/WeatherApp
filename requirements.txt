@@ -7,6 +7,7 @@ bootstrap4==0.1.0
 certifi==2021.10.8
 cffi==1.15.0
 charset-normalizer==2.0.12
+dj-database-url==0.5.0
 djangify==1.0.0
 Django==4.0.4
 django-bootstrap3==21.2
@@ -15,8 +16,10 @@ django-braces==1.15.0
 django-ckeditor==6.4.1
 django-crispy-forms==1.14.0
 django-filter==21.1
+django-heroku==0.3.1
 django-js-asset==1.2.2
 django-misaka==0.2.1
+django-on-heroku==1.1.2
 Faker==13.3.4
 gunicorn==20.1.0
 houdini.py==0.1.0
@@ -24,11 +27,13 @@ idna==3.3
 misaka==2.1.1
 Pillow==9.1.0
 portalocker==2.4.0
-psycopg2==2.8.5
+
+psycopg2-binary==2.9.3
 pycparser==2.21
 Pygments==2.12.0
 python-dateutil==2.8.1
 pytz==2020.1
+pywin32==304
 requests==2.27.1
 six==1.15.0
 soupsieve==2.3.2.post1
