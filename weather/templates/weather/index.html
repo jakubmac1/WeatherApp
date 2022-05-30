@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<title>Pogoda</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+
+</style>
+</head>
+<body class="content">
+
+<!-- Sidebar -->
+<nav class="sidebar collapse white animate-left" style="overflow: hidden" id="mySidebar"><br>
+  <div class="container">
+
+    <h4><b>Jakub Maciasz</b></h4>
+    <p class="text-grey">Python Django Web-Developer</p>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
+
+  </div>
+  <div class="w3-panel w3-large">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Page content -->
+<div class="main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header id="portfolio">
+    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+    <h1><b>Pogoda</b></h1>
+    <div class="w3-section w3-bottombar w3-padding-16">
+
+    </div>
+    </div>
+  </header>
+
+  <div>
+    <form method="POST">
+       {% csrf_token %}
+        <div>
+            <div class="form">
+
+                {{form.name}}
+              <button type="submit" class="button">
+                    Dodaj
+                </button>
+            </div>
+        </div>
+        {% if message %}
+
+        <div class="notification {{message_class}}">
+            {{message}}
+        </div>
+        {% endif %}
+        {% if err_msg %}
+
+        <div class="notification {{message_class}}">
+            {{err_msg}}
+        </div>
+        {% endif %}
+
+    </form>
+</div>
+
+  <div class="w3-row-padding">
+      {% for city_weather in weather_data %}
+    <div class="w3-third w3-container w3-margin-bottom" >
+      <h2><span class="title">{{ city_weather.city }}</span></h2>
+      <figure class="icon">
+        <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+      </figure>
+      <div class="w3-container w3-white">
+        <div class="przycisk">
+            <a href="{% url 'delete_city' city_weather.city %}">
+              <button type="button" class="btn btn-danger">X</button>
+            </a>
+        </div>
+          <h4>Pogoda</h4>
+          <span class="subtitle">{{ city_weather.temperature }} °C</span>
+          <br> Niebo: {{ city_weather.description }}
+          <br> Wilgotność: {{ city_weather.humidity }}%
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
