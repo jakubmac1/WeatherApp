@@ -1,3 +1,72 @@
+.card {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    color: #a18a96;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 30px 20px 20px 30px;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    display: inline-block;
+
+
+}
+
+.card__content {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    transform: translateY(70px);
+    transition: transform .25s;
+
+}
+
+.card__content::before {
+    content: '';
+    position: absolute;
+    top: -48;
+    right: -45px;
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+    transform: rotate(-175deg);
+    border-radius: 50%;
+    box-shadow: inset 48px 48px #fff;
+
+}
+
+.card__title {
+        color: #6A515E;
+        line-height: 15px;
+}
+
+.card_subtitle {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.card__description {
+    font-size: 14px;
+    opacity:0;
+    transition: opacity .5s;
+
+}
+
+.card:hover .card__content {
+    transform: translateY(0);
+}
+
+.card:hover .card__description {
+    opacity: 1;
+    transition-delay: .25s;
+}
+
 .content {
 margin-left:auto;
 margin-right:auto;
@@ -5,24 +74,33 @@ max-width:980px;
 color:#000!important;
 background-color:#f1f1f1!important;
 max-width:1600px;
+overflow-x: hidden;
 }
 
 .form {
 margin-left: 15px;
 }
 
-.button {
-border-radius: 5px;
-}
-
 .title {
 margin-top: 10px;
 }
 
+.button {
+border: 1px solid black;
+border-radius: 3px;
+background-color: #ccc;
+margin-left: 10px;
+}
 
 .przycisk {
-margin-top: 5px;
+
+position: relative;
+height: 25px;
+width: 25px;
 float: right;
+border: none;
+background: url('/static/images/bin4.png');
+background-size: cover;
 }
 
 .sidebar {
@@ -105,9 +183,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 margin-left: 15px;
 }
 
-.button {
-border-radius: 5px;
-}
 
 .title {
 margin-top: 10px;

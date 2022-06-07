@@ -63,7 +63,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
             <div class="form">
 
                 {{form.name}}
-              <button type="submit" class="button">
+              <button type="submit" class="button" >
                     Dodaj
                 </button>
             </div>
@@ -83,31 +83,43 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
     </form>
 </div>
+    {% for city_weather in weather_data %}
+    <article class="card" style="background: url('static/images/{{ city_weather.icon }}.gif'); margin-bottom: 10px ">
 
-  <div class="w3-row-padding">
-      {% for city_weather in weather_data %}
-    <div class="w3-third w3-container w3-margin-bottom" >
-      <h2><span class="title">{{ city_weather.city }}</span></h2>
-      <figure class="icon">
-        <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
-      </figure>
-      <div class="w3-container w3-white">
-        <div class="przycisk">
-            <a href="{% url 'delete_city' city_weather.city %}">
-              <button type="button" class="btn btn-danger">X</button>
-            </a>
+        <div class="card__content">
+
+            <h3 class="card__title">{{ city_weather.city }}</h3>
+            <span class="card_subtitle"><p class="card__description>">{{ city_weather.temperature }} °C</p></span>
+            <p class="card__description>">
+                Niebo: {{ city_weather.description }}
+                <br> Wilgotność: {{ city_weather.humidity }}% <a href="{% url 'delete_city' city_weather.city %}">
+              <button type="button" class="przycisk"></button>
+            </a></p>
+
+
         </div>
-          <h4>Pogoda</h4>
-          <span class="subtitle">{{ city_weather.temperature }} °C</span>
-          <br> Niebo: {{ city_weather.description }}
-          <br> Wilgotność: {{ city_weather.humidity }}%
-      </div>
-    </div>
+    </article>
     {% endfor %}
-    </div>
 <!-- End page content -->
 </div>
+<footer>
+				<div class="row pad">
+					<div class="col-lg-12 text-center">
+						<br>Jakub Maciasz &copy; 2022 <strong>Weather App</strong>
+					</div>
+					<div class="col-lg-12 text-center">
+						 <br><a href="#" style="color: darkgrey">Portfolio</a>
+					</div>
+					<div class="col-lg-12 text-center">
+						<a href="https://github.com/faya22" style="color: darkgrey">GitHub</a>
+					</div>
+					<div class="col-lg-12 text-center">
+						<a href="https://www.linkedin.com/in/jakub-maciasz-53082521b/" style="color: darkgrey">LinkedIn</a>
+                        <p><br></p>
+					</div>
 
+				</div>
+			</footer>
 <script>
 // Script to open and close sidebar
 function w3_open() {
