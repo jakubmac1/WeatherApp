@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-iix6enbs(84&0p##tqbor=$oal-b9y6+6+jq_b3w8l(pe#rez_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['djangoweatherapp970913.herokuapp.com']
 
 
